@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Groccery Shopping List</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Shopping List</h1>
+    <hr>
+    <h2>Save Product</h2>
+
+    <form action="#" th:action="@{/saveProduct}" th:object="${shoppingProduct}" method="POST">
+        <input type="text" th:field="*{productName}" placeholder="Product Name" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{whoAdd}" placeholder="Who Add" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{total}" placeholder="Total" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> Save Product</button>
+    </form>
+
+    <hr>
+
+    <a th:href="@{/}"> Back to Shopping List</a>
+</div>
+</body>
+
+
+</html>
