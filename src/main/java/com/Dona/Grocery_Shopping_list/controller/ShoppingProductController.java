@@ -1,15 +1,15 @@
 package com.Dona.Grocery_Shopping_list.controller;
 
 
+import com.Dona.Grocery_Shopping_list.exception.productAlreadyExistsException;
 import com.Dona.Grocery_Shopping_list.model.ShoppingProduct;
 import com.Dona.Grocery_Shopping_list.service.ShoppingProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ShoppingProductController {
@@ -53,6 +53,11 @@ public class ShoppingProductController {
         // call delete product method
         this.shoppingProductService.deleteProduct(id);
         return "redirect:/";
+    }
+
+    @ExceptionHandler(productAlreadyExistsException.class)
+    public ResponseEntity<String> handleProductAlreadyExists(productAlreadyExistsException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
     }
 
 }
