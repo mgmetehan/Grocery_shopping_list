@@ -1,5 +1,6 @@
 package com.Dona.Grocery_Shopping_list.service;
 
+import com.Dona.Grocery_Shopping_list.exception.productAlreadyExistsException;
 import com.Dona.Grocery_Shopping_list.model.ShoppingProduct;
 import com.Dona.Grocery_Shopping_list.repository.ShoppingProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,10 @@ public class ShoppingProductServiceImpl implements ShoppingProductService {
 
     @Override
     public void saveProduct(ShoppingProduct shoppingProduct) {
+        Optional<ShoppingProduct> shoppingProductByName = shoppingProductRepository.findByProductName(shoppingProduct.getProductName());
+        if (shoppingProductByName.isPresent()) {
+            throw new productAlreadyExistsException("il already exists with name " + shoppingProduct.getProductName());
+        }
         this.shoppingProductRepository.save(shoppingProduct);
     }
 
