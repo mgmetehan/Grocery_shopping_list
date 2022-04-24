@@ -48,6 +48,13 @@ public class ShoppingProductController {
         return "update_product";
     }
 
+    @PostMapping("/updateProduct")
+    public String updateProduct(@ModelAttribute("shoppingProduct") ShoppingProduct newShoppingProduct) {
+        // update product to database
+        shoppingProductService.updateProduct(newShoppingProduct);
+        return "redirect:/";
+    }
+
     @GetMapping("/deleteShoppingProduct/{id}")
     public String deleteShoppingProduct(@PathVariable(value = "id") long id) {
         // call delete product method

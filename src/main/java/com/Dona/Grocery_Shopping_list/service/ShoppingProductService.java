@@ -9,6 +9,8 @@ public interface ShoppingProductService {
 
     void saveProduct(ShoppingProduct shoppingProduct);
 
+    void updateProduct(ShoppingProduct shoppingProduct);
+
     ShoppingProduct getProductById(long id);
 
     void deleteProduct(long id);

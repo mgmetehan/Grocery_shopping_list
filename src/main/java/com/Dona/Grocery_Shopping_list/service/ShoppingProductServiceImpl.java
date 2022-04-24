@@ -29,6 +29,11 @@ public class ShoppingProductServiceImpl implements ShoppingProductService {
     }
 
     @Override
+    public void updateProduct(ShoppingProduct shoppingProduct) {
+        this.shoppingProductRepository.save(shoppingProduct);
+    }
+
+    @Override
     public ShoppingProduct getProductById(long id) {
         Optional<ShoppingProduct> optional = shoppingProductRepository.findById(id);
         ShoppingProduct shoppingProduct = null;

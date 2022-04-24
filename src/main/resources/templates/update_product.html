@@ -15,7 +15,7 @@
     <hr>
     <h2>Update Product</h2>
 
-    <form action="#" th:action="@{/saveProduct}" th:object="${shoppingProduct}" method="POST">
+    <form action="#" th:action="@{/updateProduct}" th:object="${shoppingProduct}" method="POST">
 
         <!-- Add hidden form field to handle update -->
         <input type="hidden" th:field="*{id}"/>
