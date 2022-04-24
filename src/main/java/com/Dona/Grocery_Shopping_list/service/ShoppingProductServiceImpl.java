@@ -50,6 +50,4 @@ public class ShoppingProductServiceImpl implements ShoppingProductService {
     public void deleteProduct(long id) {
         this.shoppingProductRepository.deleteById(id);
     }
-
-
 }
