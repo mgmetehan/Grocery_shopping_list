@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Controller
 public class ShoppingProductController {
     @Autowired
@@ -32,7 +34,7 @@ public class ShoppingProductController {
     }
 
     @PostMapping("/saveProduct")
-    public String saveProduct(@ModelAttribute("shoppingProduct") ShoppingProduct shoppingProduct) {
+    public String saveProduct(@Valid @ModelAttribute("shoppingProduct") ShoppingProduct shoppingProduct) {//@Valid
         // save product to database
         shoppingProductService.saveProduct(shoppingProduct);
         return "redirect:/";
@@ -49,7 +51,7 @@ public class ShoppingProductController {
     }
 
     @PostMapping("/updateProduct")
-    public String updateProduct(@ModelAttribute("shoppingProduct") ShoppingProduct newShoppingProduct) {
+    public String updateProduct(@Valid @ModelAttribute("shoppingProduct") ShoppingProduct newShoppingProduct) {
         // update product to database
         shoppingProductService.updateProduct(newShoppingProduct);
         return "redirect:/";
